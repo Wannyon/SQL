@@ -139,7 +139,9 @@ truncate table bigtbl1;	-- DDL 명령문 롤백 불가능 그러나 빠르다.
 drop table bigtbl1;		-- DDL 명령문
 
 
--- with as
+-- with as --
 select userid as '사용자', sum(price*amount) as '총구매액' from buytbl group by userid order by sum(price*amount) desc;
 
-with abc(userid, total) as (select userid, sum(price*amount) from buytbl group by userid) select * from abc order by total desc;
+with abc(userid, total) 
+	as (select userid, sum(price*amount) from buytbl group by userid) 
+    select * from abc order by total desc;
